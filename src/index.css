@@ -218,3 +218,34 @@ body {
 .btn--social:hover { background: var(--border); }
 
 .btn--full { width: 100%; }
+
+/* ── Pix / Pagamento ─────────────────────────────────────────── */
+.pix-info-card { }
+.pix-info-card__header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.pix-info-card__titulo  { font-size: 16px; font-weight: 600; }
+.pix-info-card__desc    { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.pix-info-card__valor   { font-size: 28px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+.pix-info-card__items   { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--text-muted); }
+
+.pix-card { display: flex; flex-direction: column; gap: 20px; }
+.pix-card__header  { display: flex; align-items: center; justify-content: space-between; }
+.pix-card__expiry  { font-size: 12px; color: var(--text-muted); }
+.pix-card__hint    { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+.pix-qr            { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.pix-qr__img       { width: 200px; height: 200px; border: 1px solid var(--border); border-radius: 8px; background: white; }
+.pix-qr__label     { font-size: 13px; color: var(--text-muted); }
+
+.pix-copy          { }
+.pix-copy__label   { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.pix-copy__box     { display: flex; gap: 10px; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; }
+.pix-copy__code    { font-size: 11px; font-family: monospace; color: var(--text-muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.pix-success       { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 48px 32px; }
+.pix-success__icon { font-size: 48px; }
+.pix-success h2    { font-size: 20px; font-weight: 700; }
+.pix-success p     { color: var(--text-muted); font-size: 14px; }
+
+.pix-dev-hint      { background: rgba(99,102,241,0.08); border: 1px dashed rgba(99,102,241,0.3); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); }
+
+.btn--success { background: var(--success) !important; color: #fff !important; }

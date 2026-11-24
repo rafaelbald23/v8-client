@@ -3,10 +3,14 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
 import { authApi } from '../../utils/api.js'
 
 const NAV = [
-  { to: '/tomador',            label: 'Início',      end: true },
-  { to: '/tomador/solicitacao', label: 'Solicitação' },
-  { to: '/tomador/documentos',  label: 'Documentos'  },
-  { to: '/tomador/status',      label: 'Meu status'  },
+  { to: '/tomador',             label: 'Início',       end: true },
+  { to: '/tomador/cadastro',    label: 'Meu cadastro'  },
+  { to: '/tomador/documentos',  label: 'Documentos'    },
+  { to: '/tomador/contatos',    label: 'Contatos'      },
+  { to: '/tomador/privacidade', label: 'Privacidade'   },
+  { to: '/tomador/pagamento',   label: 'Taxa de acesso'},
+  { to: '/tomador/solicitacao', label: 'Solicitação'   },
+  { to: '/tomador/status',      label: 'Meu status'    },
 ]
 
 export default function TomadorLayout() {
@@ -25,12 +29,8 @@ export default function TomadorLayout() {
         <div className="sidebar__brand">V8 Exclusive</div>
         <nav className="sidebar__nav">
           {NAV.map(item => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) => `sidebar__link${isActive ? ' sidebar__link--active' : ''}`}
-            >
+            <NavLink key={item.to} to={item.to} end={item.end}
+              className={({ isActive }) => `sidebar__link${isActive ? ' sidebar__link--active' : ''}`}>
               {item.label}
             </NavLink>
           ))}
@@ -40,9 +40,7 @@ export default function TomadorLayout() {
           <button className="sidebar__logout" onClick={handleLogout}>Sair</button>
         </div>
       </aside>
-      <main className="main-content">
-        <Outlet />
-      </main>
+      <main className="main-content"><Outlet /></main>
     </div>
   )
 }
