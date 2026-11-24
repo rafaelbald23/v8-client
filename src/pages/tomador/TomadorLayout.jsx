@@ -3,10 +3,11 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
 import { authApi } from '../../utils/api.js'
 
 const NAV = [
-  { to: '/tomador',            label: 'Início',      end: true },
-  { to: '/tomador/solicitacao', label: 'Solicitação' },
-  { to: '/tomador/documentos',  label: 'Documentos'  },
-  { to: '/tomador/status',      label: 'Meu status'  },
+  { to: '/tomador',             label: 'Início',      end: true },
+  { to: '/tomador/cadastro',    label: 'Meu cadastro' },
+  { to: '/tomador/solicitacao', label: 'Solicitação'  },
+  { to: '/tomador/documentos',  label: 'Documentos'   },
+  { to: '/tomador/status',      label: 'Meu status'   },
 ]
 
 export default function TomadorLayout() {

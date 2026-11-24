@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 import TomadorLayout    from './pages/tomador/TomadorLayout.jsx'
 import TomadorDashboard from './pages/tomador/TomadorDashboard.jsx'
+import CadastroPerfil   from './pages/tomador/CadastroPerfil.jsx'
 
 import InvestidorLayout    from './pages/investidor/InvestidorLayout.jsx'
 import InvestidorDashboard from './pages/investidor/InvestidorDashboard.jsx'
@@ -41,6 +42,7 @@ function Router() {
         </ProtectedRoute>
       }>
         <Route index element={<TomadorDashboard />} />
+        <Route path="cadastro"    element={<CadastroPerfil />} />
         {/* Sprint 2+ */}
         <Route path="solicitacao" element={<div className="page"><p>🚧 Solicitação — Sprint 2</p></div>} />
         <Route path="documentos"  element={<div className="page"><p>🚧 Documentos — Sprint 2</p></div>} />

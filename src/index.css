@@ -218,3 +218,103 @@ body {
 .btn--social:hover { background: var(--border); }
 
 .btn--full { width: 100%; }
+
+/* ── Misc ────────────────────────────────────────────────────── */
+.text-muted { color: var(--text-muted); font-size: 14px; }
+
+.btn--secondary {
+  background: var(--bg-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn--secondary:hover { background: var(--border); }
+
+/* ── Card ────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 24px;
+}
+
+/* ── Forms ───────────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.form-label--full { grid-column: 1 / -1; }
+
+.form-input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.form-input:focus  { border-color: var(--accent); }
+.form-input option { background: var(--bg-surface); }
+
+.form-error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--danger);
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin: 16px 0 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Steps indicator ─────────────────────────────────────────── */
+.steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.steps__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.steps__circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.steps__item--active .steps__circle { background: var(--accent); border-color: var(--accent); color: #fff; }
+.steps__item--done   .steps__circle { background: var(--success); border-color: var(--success); color: #fff; }
+.steps__label { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.steps__item--active .steps__label  { color: var(--text); font-weight: 500; }
+.steps__line { flex: 1; height: 2px; background: var(--border); margin: 0 8px; }
