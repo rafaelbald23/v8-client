@@ -8,6 +8,9 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 import TomadorLayout    from './pages/tomador/TomadorLayout.jsx'
 import TomadorDashboard from './pages/tomador/TomadorDashboard.jsx'
+import CadastroPerfil   from './pages/tomador/CadastroPerfil.jsx'
+import Documentos       from './pages/tomador/Documentos.jsx'
+import Contatos         from './pages/tomador/Contatos.jsx'
 
 import InvestidorLayout    from './pages/investidor/InvestidorLayout.jsx'
 import InvestidorDashboard from './pages/investidor/InvestidorDashboard.jsx'
@@ -26,35 +29,28 @@ function RootRedirect() {
 function Router() {
   return (
     <Routes>
-      {/* Públicas */}
-      <Route path="/login"           element={<Login />} />
-      <Route path="/auth/callback"   element={<AuthCallback />} />
-      <Route path="/unauthorized"    element={<Unauthorized />} />
-
-      {/* Redirect raiz */}
+      <Route path="/login"         element={<Login />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/unauthorized"  element={<Unauthorized />} />
       <Route path="/" element={<RootRedirect />} />
 
       {/* Tomador */}
       <Route path="/tomador" element={
-        <ProtectedRoute roles={['tomador']}>
-          <TomadorLayout />
-        </ProtectedRoute>
+        <ProtectedRoute roles={['tomador']}><TomadorLayout /></ProtectedRoute>
       }>
-        <Route index element={<TomadorDashboard />} />
-        {/* Sprint 2+ */}
-        <Route path="solicitacao" element={<div className="page"><p>🚧 Solicitação — Sprint 2</p></div>} />
-        <Route path="documentos"  element={<div className="page"><p>🚧 Documentos — Sprint 2</p></div>} />
-        <Route path="status"      element={<div className="page"><p>🚧 Status — Sprint 2</p></div>} />
+        <Route index                element={<TomadorDashboard />} />
+        <Route path="cadastro"      element={<CadastroPerfil />} />
+        <Route path="documentos"    element={<Documentos />} />
+        <Route path="contatos"      element={<Contatos />} />
+        <Route path="solicitacao"   element={<div className="page"><p>🚧 Solicitação — Sprint 2</p></div>} />
+        <Route path="status"        element={<div className="page"><p>🚧 Status — Sprint 2</p></div>} />
       </Route>
 
       {/* Investidor */}
       <Route path="/investidor" element={
-        <ProtectedRoute roles={['investidor']}>
-          <InvestidorLayout />
-        </ProtectedRoute>
+        <ProtectedRoute roles={['investidor']}><InvestidorLayout /></ProtectedRoute>
       }>
         <Route index element={<InvestidorDashboard />} />
-        {/* Sprint 3+ */}
         <Route path="solicitacoes" element={<div className="page"><p>🚧 Solicitações — Sprint 5</p></div>} />
         <Route path="cobrancas"    element={<div className="page"><p>🚧 Cobranças — Sprint 9</p></div>} />
         <Route path="agenda"       element={<div className="page"><p>🚧 Agenda — Sprint 9</p></div>} />
@@ -64,18 +60,14 @@ function Router() {
 
       {/* Admin */}
       <Route path="/admin" element={
-        <ProtectedRoute roles={['admin']}>
-          <AdminLayout />
-        </ProtectedRoute>
+        <ProtectedRoute roles={['admin']}><AdminLayout /></ProtectedRoute>
       }>
         <Route index element={<AdminDashboard />} />
-        {/* Sprint 10+ */}
         <Route path="usuarios"   element={<div className="page"><p>🚧 Usuários — Sprint 10</p></div>} />
         <Route path="servicos"   element={<div className="page"><p>🚧 Serviços — Sprint 10</p></div>} />
         <Route path="financeiro" element={<div className="page"><p>🚧 Financeiro — Sprint 10</p></div>} />
       </Route>
 
-      {/* 404 */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
@@ -83,8 +75,6 @@ function Router() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Router />
-    </AuthProvider>
+    <AuthProvider><Router /></AuthProvider>
   )
 }
