@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import { authApi } from '../utils/api.js'
@@ -7,8 +7,8 @@ export default function Login() {
   const { login } = useAuth()
   const navigate  = useNavigate()
   const [params]  = useSearchParams()
-  const [form, setForm]     = useState({ email: '', password: '' })
-  const [error, setError]   = useState(params.get('error') || '')
+  const [form, setForm]       = useState({ email: '', password: '' })
+  const [error, setError]     = useState(params.get('error') || '')
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e) {
@@ -16,9 +16,9 @@ export default function Login() {
     setError('')
     setLoading(true)
     try {
-      const { token, user } = await authApi.login(form)
-      login(token, user)
-      navigate(dashboardByRole(user.role), { replace: true })
+      const { token, user, onboarding } = await authApi.login(form)
+      login(token, user, onboarding)
+      navigate(redirectByRole(user.role, onboarding), { replace: true })
     } catch (err) {
       setError(err.message)
     } finally {
@@ -31,7 +31,7 @@ export default function Login() {
       <div className="auth-card">
         <div className="auth-brand">
           <h1>V8 Exclusive</h1>
-          <p>Plataforma de crédito</p>
+          <p>Plataforma de cr├®dito</p>
         </div>
 
         {error && <div className="auth-error">{error}</div>}
@@ -39,23 +39,15 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="auth-form">
           <label>
             Email
-            <input
-              type="email"
-              required
-              autoComplete="email"
+            <input type="email" required autoComplete="email"
               value={form.email}
-              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-            />
+              onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
           </label>
           <label>
             Senha
-            <input
-              type="password"
-              required
-              autoComplete="current-password"
+            <input type="password" required autoComplete="current-password"
               value={form.password}
-              onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
-            />
+              onChange={e => setForm(f => ({ ...f, password: e.target.value }))} />
           </label>
           <button type="submit" disabled={loading} className="btn btn--primary btn--full">
             {loading ? 'Entrando...' : 'Entrar'}
@@ -70,15 +62,22 @@ export default function Login() {
         </div>
 
         <p className="auth-footer">
-          Não tem conta? <Link to="/register">Cadastrar</Link>
+          N├úo tem conta? <Link to="/register">Cadastrar</Link>
         </p>
       </div>
     </div>
   )
 }
 
-function dashboardByRole(role) {
+function redirectByRole(role, onboarding) {
   if (role === 'admin')      return '/admin'
   if (role === 'investidor') return '/investidor'
-  return '/tomador'
+
+  // Tomador pendente vai para pagamento; ativo vai para dashboard
+  if (role === 'tomador') {
+    if (!onboarding?.ativo) return '/tomador/pagamento'
+    return '/tomador'
+  }
+
+  return '/login'
 }
