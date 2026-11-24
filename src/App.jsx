@@ -8,6 +8,8 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 import TomadorLayout    from './pages/tomador/TomadorLayout.jsx'
 import TomadorDashboard from './pages/tomador/TomadorDashboard.jsx'
+import CadastroPerfil   from './pages/tomador/CadastroPerfil.jsx'
+import Documentos       from './pages/tomador/Documentos.jsx'
 
 import InvestidorLayout    from './pages/investidor/InvestidorLayout.jsx'
 import InvestidorDashboard from './pages/investidor/InvestidorDashboard.jsx'
@@ -27,9 +29,9 @@ function Router() {
   return (
     <Routes>
       {/* Públicas */}
-      <Route path="/login"           element={<Login />} />
-      <Route path="/auth/callback"   element={<AuthCallback />} />
-      <Route path="/unauthorized"    element={<Unauthorized />} />
+      <Route path="/login"         element={<Login />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/unauthorized"  element={<Unauthorized />} />
 
       {/* Redirect raiz */}
       <Route path="/" element={<RootRedirect />} />
@@ -41,9 +43,9 @@ function Router() {
         </ProtectedRoute>
       }>
         <Route index element={<TomadorDashboard />} />
-        {/* Sprint 2+ */}
+        <Route path="cadastro"    element={<CadastroPerfil />} />
+        <Route path="documentos"  element={<Documentos />} />
         <Route path="solicitacao" element={<div className="page"><p>🚧 Solicitação — Sprint 2</p></div>} />
-        <Route path="documentos"  element={<div className="page"><p>🚧 Documentos — Sprint 2</p></div>} />
         <Route path="status"      element={<div className="page"><p>🚧 Status — Sprint 2</p></div>} />
       </Route>
 
@@ -54,7 +56,6 @@ function Router() {
         </ProtectedRoute>
       }>
         <Route index element={<InvestidorDashboard />} />
-        {/* Sprint 3+ */}
         <Route path="solicitacoes" element={<div className="page"><p>🚧 Solicitações — Sprint 5</p></div>} />
         <Route path="cobrancas"    element={<div className="page"><p>🚧 Cobranças — Sprint 9</p></div>} />
         <Route path="agenda"       element={<div className="page"><p>🚧 Agenda — Sprint 9</p></div>} />
@@ -69,7 +70,6 @@ function Router() {
         </ProtectedRoute>
       }>
         <Route index element={<AdminDashboard />} />
-        {/* Sprint 10+ */}
         <Route path="usuarios"   element={<div className="page"><p>🚧 Usuários — Sprint 10</p></div>} />
         <Route path="servicos"   element={<div className="page"><p>🚧 Serviços — Sprint 10</p></div>} />
         <Route path="financeiro" element={<div className="page"><p>🚧 Financeiro — Sprint 10</p></div>} />
