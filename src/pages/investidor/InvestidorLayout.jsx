@@ -9,6 +9,7 @@ const NAV = [
   { to: '/investidor/agenda',       label: 'Agenda'        },
   { to: '/investidor/clientes',     label: 'Clientes'      },
   { to: '/investidor/calculadora',  label: 'Calculadora'   },
+  { to: '/investidor/perfil',       label: 'Meu perfil'    },
 ]
 
 export default function InvestidorLayout() {
