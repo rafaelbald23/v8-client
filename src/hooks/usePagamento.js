@@ -34,7 +34,7 @@ export function usePagamentoTaxa() {
   useEffect(() => {
     load()
     return () => { if (pollRef.current) clearInterval(pollRef.current) }
-  }, [])
+  }, [load])
 
   async function gerarCobranca() {
     const data = await api.post('/api/pagamento/taxa')
