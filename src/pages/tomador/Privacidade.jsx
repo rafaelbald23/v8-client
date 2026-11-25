@@ -35,7 +35,7 @@ const CONSENTIMENTOS = [
 ]
 
 export default function Privacidade() {
-  const { status, loading, error, registrar, revogar } = useLGPD()
+  const { status, loading, error, registrar } = useLGPD()
   const [saving,   setSaving]   = useState(false)
   const [msg,      setMsg]      = useState('')
   const [checks,   setChecks]   = useState({})

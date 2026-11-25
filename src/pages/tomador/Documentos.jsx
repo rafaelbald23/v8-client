@@ -155,7 +155,7 @@ export default function Documentos() {
                   <div className="doc-item__right">
                     <span className={cfg.cls}>{cfg.label}</span>
                     {doc.status === 'rejeitado' && doc.rejeitado_motivo && (
-                      <span className="doc-item__motivo">"{doc.rejeitado_motivo}"</span>
+                      <span className="doc-item__motivo">&ldquo;{doc.rejeitado_motivo}&rdquo;</span>
                     )}
                     {doc.status !== 'aprovado' && (
                       <button className="btn-icon btn-icon--danger" onClick={() => handleRemover(doc.id)} title="Remover">Ô£ò</button>
