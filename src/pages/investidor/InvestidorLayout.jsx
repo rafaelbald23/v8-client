@@ -1,14 +1,15 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+﻿import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 import { authApi } from '../../utils/api.js'
 
 const NAV = [
   { to: '/investidor',              label: 'Dashboard',    end: true },
-  { to: '/investidor/solicitacoes', label: 'Solicitações'  },
-  { to: '/investidor/cobrancas',    label: 'Cobranças'     },
+  { to: '/investidor/solicitacoes', label: 'Solicita├º├Áes'  },
+  { to: '/investidor/cobrancas',    label: 'Cobran├ºas'     },
   { to: '/investidor/agenda',       label: 'Agenda'        },
   { to: '/investidor/clientes',     label: 'Clientes'      },
   { to: '/investidor/calculadora',  label: 'Calculadora'   },
+  { to: '/investidor/perfil',       label: 'Meu perfil'    },
 ]
 
 export default function InvestidorLayout() {
